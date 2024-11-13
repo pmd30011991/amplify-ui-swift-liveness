@@ -15,11 +15,11 @@ import Amplify
 
 public struct FaceLivenessDetectorView: View {
     @StateObject var viewModel: FaceLivenessDetectionViewModel
-    @Binding var livenessColorConfiguration: LivenessColorConfiguration
     @Binding var isPresented: Bool
     @State var displayState: DisplayState = .awaitingCameraPermission
     @State var displayingCameraPermissionsNeededAlert = false
 
+    let livenessColorConfiguration: LivenessColorConfiguration
     let disableStartView: Bool
     let onCompletion: (Result<Void, FaceLivenessDetectionError>) -> Void
 
