@@ -158,71 +158,71 @@ extension EnvironmentValues {
         set { self[LivenessColorConfigurationKey.self] = newValue }
     }
 }
-
-// Extension to use the environment configuration
-extension Color {
-    @Environment(\.livenessColors) static var configuration
-    
-    static var livenessPrimaryBackground: Color {
-        dynamicColors(
-            light: .hex(configuration.primaryBackground.light),
-            dark: .hex(configuration.primaryBackground.dark)
-        )
-    }
-    
-    static var livenessPrimaryLabel: Color {
-        dynamicColors(
-            light: .hex(configuration.primaryLabel.light),
-            dark: .hex(configuration.primaryLabel.dark)
-        )
-    }
-    
-    static var livenessBackground: Color {
-        dynamicColors(
-            light: .hex(configuration.background.light),
-            dark: .hex(configuration.background.dark)
-        )
-    }
-    
-    static var livenessLabel: Color {
-        dynamicColors(
-            light: .hex(configuration.label.light),
-            dark: .hex(configuration.label.dark)
-        )
-    }
-    
-    static var livenessErrorBackground: Color {
-        dynamicColors(
-            light: .hex(configuration.errorBackground.light),
-            dark: .hex(configuration.errorBackground.dark)
-        )
-    }
-    
-    static var livenessErrorLabel: Color {
-        dynamicColors(
-            light: .hex(configuration.errorLabel.light),
-            dark: .hex(configuration.errorLabel.dark)
-        )
-    }
-    
-    static var livenessWarningBackground: Color {
-        dynamicColors(
-            light: .hex(configuration.warningBackground.light),
-            dark: .hex(configuration.warningBackground.dark)
-        )
-    }
-    
-    static var livenessWarningLabel: Color {
-        dynamicColors(
-            light: .hex(configuration.warningLabel.light),
-            dark: .hex(configuration.warningLabel.dark)
-        )
-    }
-    
-    static var livenessPreviewBorder: Color {
-        dynamicColors(
-            light: .hex(configuration.previewBorder.light),
-            dark: .hex(configuration.previewBorder.dark)
-        )
-    }
+//
+//// Extension to use the environment configuration
+//extension Color {
+//    @Environment(\.livenessColors) static var configuration
+//    
+//    static var livenessPrimaryBackground: Color {
+//        dynamicColors(
+//            light: .hex(configuration.primaryBackground.light),
+//            dark: .hex(configuration.primaryBackground.dark)
+//        )
+//    }
+//    
+//    static var livenessPrimaryLabel: Color {
+//        dynamicColors(
+//            light: .hex(configuration.primaryLabel.light),
+//            dark: .hex(configuration.primaryLabel.dark)
+//        )
+//    }
+//    
+//    static var livenessBackground: Color {
+//        dynamicColors(
+//            light: .hex(configuration.background.light),
+//            dark: .hex(configuration.background.dark)
+//        )
+//    }
+//    
+//    static var livenessLabel: Color {
+//        dynamicColors(
+//            light: .hex(configuration.label.light),
+//            dark: .hex(configuration.label.dark)
+//        )
+//    }
+//    
+//    static var livenessErrorBackground: Color {
+//        dynamicColors(
+//            light: .hex(configuration.errorBackground.light),
+//            dark: .hex(configuration.errorBackground.dark)
+//        )
+//    }
+//    
+//    static var livenessErrorLabel: Color {
+//        dynamicColors(
+//            light: .hex(configuration.errorLabel.light),
+//            dark: .hex(configuration.errorLabel.dark)
+//        )
+//    }
+//    
+//    static var livenessWarningBackground: Color {
+//        dynamicColors(
+//            light: .hex(configuration.warningBackground.light),
+//            dark: .hex(configuration.warningBackground.dark)
+//        )
+//    }
+//    
+//    static var livenessWarningLabel: Color {
+//        dynamicColors(
+//            light: .hex(configuration.warningLabel.light),
+//            dark: .hex(configuration.warningLabel.dark)
+//        )
+//    }
+//    
+//    static var livenessPreviewBorder: Color {
+//        dynamicColors(
+//            light: .hex(configuration.previewBorder.light),
+//            dark: .hex(configuration.previewBorder.dark)
+//        )
+//    }
 }
