@@ -11,11 +11,12 @@ struct InstructionView: View {
     @EnvironmentObject private var colors: LivenessColors
     let text: String
     let backgroundColor: Color
+    var textColor: Color
     var font: Font = .body
     
     var body: some View {
         Text(text)
-            .foregroundColor(colors.livenessLabel)
+            .foregroundColor(textColor)
             .font(font)
             .padding(12)
             .background(backgroundColor)
