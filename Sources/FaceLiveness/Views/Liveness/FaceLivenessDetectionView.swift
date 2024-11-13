@@ -20,6 +20,7 @@ public struct FaceLivenessDetectorView: View {
     @State var displayState: DisplayState = .awaitingCameraPermission
     @State var displayingCameraPermissionsNeededAlert = false
 
+    let livenessColorConfiguration: LivenessColorConfiguration
     let disableStartView: Bool
     let onCompletion: (Result<Void, FaceLivenessDetectionError>) -> Void
 
