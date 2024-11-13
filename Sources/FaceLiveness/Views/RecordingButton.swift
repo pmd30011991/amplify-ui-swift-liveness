@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecordingButton: View {
+    @EnvironmentObject private var colors: LivenessColors
     var body: some View {
         VStack(alignment: .center) {
             Circle()
@@ -19,7 +20,7 @@ struct RecordingButton: View {
         }
         .padding([.top, .bottom], 12)
         .padding([.leading, .trailing], 8)
-        .background(Color.livenessBackground)
+        .background(colors.livenessBackground)
         .cornerRadius(8)
     }
 }

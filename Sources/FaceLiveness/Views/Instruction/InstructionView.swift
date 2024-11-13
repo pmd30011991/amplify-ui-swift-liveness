@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct InstructionView: View {
+    @EnvironmentObject private var colors: LivenessColors
     let text: String
     let backgroundColor: Color
-    var textColor: Color = .livenessLabel
     var font: Font = .body
     
     var body: some View {
         Text(text)
-            .foregroundColor(textColor)
+            .foregroundColor(colors.livenessLabel)
             .font(font)
             .padding(12)
             .background(backgroundColor)

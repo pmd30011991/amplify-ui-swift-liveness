@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GetReadyPageView: View {
+    @EnvironmentObject private var colors: LivenessColors
     let beginCheckButtonDisabled: Bool
     let onBegin: () -> Void
 
@@ -45,7 +46,7 @@ struct GetReadyPageView: View {
             action: onBegin,
             label: {
                 Text(LocalizedStrings.get_ready_begin_check)
-                    .foregroundColor(.livenessPrimaryLabel)
+                    .foregroundColor(colors.livenessPrimaryLabel)
                     .frame(maxWidth: .infinity)
             }
         )

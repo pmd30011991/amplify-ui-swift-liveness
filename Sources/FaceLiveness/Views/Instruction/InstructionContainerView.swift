@@ -10,14 +10,14 @@ import Combine
 
 struct InstructionContainerView: View {
     @ObservedObject var viewModel: FaceLivenessDetectionViewModel
-
+    @EnvironmentObject private var colors: LivenessColors
     var body: some View {
         switch viewModel.livenessState.state {
         case .displayingFreshness:
             InstructionView(
                 text: LocalizedStrings.challenge_instruction_hold_still,
-                backgroundColor: .livenessPrimaryBackground,
-                textColor: .livenessPrimaryLabel,
+                backgroundColor: colors.livenessPrimaryBackground,
+                textColor: colors.livenessPrimaryLabel,
                 font: .title
             )
             .onAppear {
@@ -30,8 +30,8 @@ struct InstructionContainerView: View {
         case .awaitingFaceInOvalMatch(.faceTooClose, _):
             InstructionView(
                 text: LocalizedStrings.challenge_instruction_move_face_back,
-                backgroundColor: .livenessErrorBackground,
-                textColor: .livenessErrorLabel,
+                backgroundColor: colors.livenessErrorBackground,
+                textColor: colors.livenessErrorLabel,
                 font: .title
             )
             .onAppear {
@@ -44,24 +44,24 @@ struct InstructionContainerView: View {
         case .awaitingFaceInOvalMatch(let reason, let percentage):
             InstructionView(
                 text: .init(reason.localizedValue),
-                backgroundColor: .livenessPrimaryBackground,
-                textColor: .livenessPrimaryLabel,
+                backgroundColor: colors.livenessPrimaryBackground,
+                textColor: colors.livenessPrimaryLabel,
                 font: .title
             )
 
             ProgressBarView(
                 emptyColor: .white,
                 borderColor: .hex("#AEB3B7"),
-                fillColor: .livenessPrimaryBackground,
-                indicatorColor: .livenessPrimaryBackground,
+                fillColor: colors.livenessPrimaryBackground,
+                indicatorColor: colors.livenessPrimaryBackground,
                 percentage: percentage
             )
             .frame(width: 200, height: 30)
         case .recording(ovalDisplayed: true):
             InstructionView(
                 text: LocalizedStrings.challenge_instruction_move_face_closer,
-                backgroundColor: .livenessPrimaryBackground,
-                textColor: .livenessPrimaryLabel,
+                backgroundColor: colors.livenessPrimaryBackground,
+                textColor: colors.livenessPrimaryLabel,
                 font: .title
             )
             .onAppear {
@@ -74,22 +74,22 @@ struct InstructionContainerView: View {
             ProgressBarView(
                 emptyColor: .white,
                 borderColor: .hex("#AEB3B7"),
-                fillColor: .livenessPrimaryBackground,
-                indicatorColor: .livenessPrimaryBackground,
+                fillColor: colors.livenessPrimaryBackground,
+                indicatorColor: colors.livenessPrimaryBackground,
                 percentage: 0.2
             )
             .frame(width: 200, height: 30)
         case .pendingFacePreparedConfirmation(let reason):
             InstructionView(
                 text: .init(reason.localizedValue),
-                backgroundColor: .livenessPrimaryBackground,
-                textColor: .livenessPrimaryLabel,
+                backgroundColor: colors.livenessPrimaryBackground,
+                textColor: colors.livenessPrimaryLabel,
                 font: .title
             )
         case .completedDisplayingFreshness:
             InstructionView(
                 text: LocalizedStrings.challenge_verifying,
-                backgroundColor: .livenessBackground
+                backgroundColor: colors.livenessBackground
             )
             .onAppear {
                 UIAccessibility.post(
@@ -100,8 +100,8 @@ struct InstructionContainerView: View {
         case .faceMatched:
             InstructionView(
                 text: LocalizedStrings.challenge_instruction_hold_still,
-                backgroundColor: .livenessPrimaryBackground,
-                textColor: .livenessPrimaryLabel,
+                backgroundColor: colors.livenessPrimaryBackground,
+                textColor: colors.livenessPrimaryLabel,
                 font: .title
             )
         default:
