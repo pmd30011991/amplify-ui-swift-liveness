@@ -18,6 +18,7 @@ struct LivenessColorConfiguration {
     var background: (light: String, dark: String)
     var label: (light: String, dark: String)
     
+    
     // Error states
     var errorBackground: (light: String, dark: String)
     var errorLabel: (light: String, dark: String)
