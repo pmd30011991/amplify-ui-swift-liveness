@@ -15,6 +15,7 @@ import Amplify
 
 public struct FaceLivenessDetectorView: View {
     @StateObject var viewModel: FaceLivenessDetectionViewModel
+    @Binding var livenessColorConfiguration: LivenessColorConfiguration
     @Binding var isPresented: Bool
     @State var displayState: DisplayState = .awaitingCameraPermission
     @State var displayingCameraPermissionsNeededAlert = false
@@ -30,6 +31,7 @@ public struct FaceLivenessDetectorView: View {
         region: String,
         disableStartView: Bool = false,
         isPresented: Binding<Bool>,
+        livenessColorConfiguration: LivenessColorConfiguration = .default,
         onCompletion: @escaping (Result<Void, FaceLivenessDetectionError>) -> Void
     ) {
         self.disableStartView = disableStartView
@@ -144,6 +146,7 @@ public struct FaceLivenessDetectorView: View {
                         }
                     }
                 }
+                .environment(\.livenessColors, livenessColorConfiguration)
 
         case .displayingGetReadyView:
             GetReadyPageView(
@@ -153,6 +156,7 @@ public struct FaceLivenessDetectorView: View {
                 },
                 beginCheckButtonDisabled: false
             )
+            .environment(\.livenessColors, livenessColorConfiguration)
             .onAppear {
                 DispatchQueue.main.async {
                     UIScreen.main.brightness = 1.0
@@ -167,6 +171,7 @@ public struct FaceLivenessDetectorView: View {
                     )
                 }
             )
+            .environment(\.livenessColors, livenessColorConfiguration)
             .onAppear {
                 DispatchQueue.main.async {
                     UIScreen.main.brightness = 1.0
@@ -191,6 +196,7 @@ public struct FaceLivenessDetectorView: View {
             }
         case .awaitingCameraPermission:
             CameraPermissionView(displayingCameraPermissionsNeededAlert: $displayingCameraPermissionsNeededAlert)
+                .environment(\.livenessColors, livenessColorConfiguration)
                 .onAppear {
                     checkCameraPermission()
                 }
