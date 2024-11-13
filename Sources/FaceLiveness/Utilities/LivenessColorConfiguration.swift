@@ -55,24 +55,6 @@ extension EnvironmentValues {
     }
 }
 
-// Color extension using the configuration
-extension Color {
-    static func dynamicColors(light: Color, dark: Color) -> Color {
-        #if os(iOS)
-        return Color(uiColor: UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(dark)
-            default:
-                return UIColor(light)
-            }
-        })
-        #else
-        return light
-        #endif
-    }
-}
-
 // Extension to use the environment configuration
 extension Color {
     @Environment(\.livenessColors) static var configuration
