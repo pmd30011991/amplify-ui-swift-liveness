@@ -11,7 +11,10 @@ struct InstructionView: View {
     @EnvironmentObject private var colors: LivenessColors
     let text: String
     let backgroundColor: Color
-    var textColor: Color = .livenessLabel
+    var textColor: Color = Color.dynamicColors(
+        light: .hex("#000000"),
+        dark: .hex("#FFFFFF")
+    )
     var font: Font = .body
     
     var body: some View {
