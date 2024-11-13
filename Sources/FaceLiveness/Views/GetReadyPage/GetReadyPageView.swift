@@ -52,7 +52,7 @@ struct GetReadyPageView: View {
         )
         .disabled(beginCheckButtonDisabled)
         .frame(height: 52)
-        ._background { Color.livenessPrimaryBackground }
+        ._background { colors.livenessPrimaryBackground }
         .cornerRadius(14)
         .padding([.leading, .trailing])
         .padding(.bottom, 16)
