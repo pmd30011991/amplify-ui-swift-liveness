@@ -147,8 +147,7 @@ public struct FaceLivenessDetectorView: View {
                         }
                     }
                 }
-                .environment(\.livenessColors, livenessColorConfiguration)
-                .withLivenessColors()
+                .withLivenessColors(configuration: <#T##LivenessColorConfiguration#>)
 
         case .displayingGetReadyView:
             GetReadyPageView(
@@ -158,8 +157,7 @@ public struct FaceLivenessDetectorView: View {
                 },
                 beginCheckButtonDisabled: false
             )
-            .environment(\.livenessColors, livenessColorConfiguration)
-            .withLivenessColors()
+            .withLivenessColors(configuration: <#T##LivenessColorConfiguration#>)
             .onAppear {
                 DispatchQueue.main.async {
                     UIScreen.main.brightness = 1.0
@@ -174,8 +172,7 @@ public struct FaceLivenessDetectorView: View {
                     )
                 }
             )
-            .environment(\.livenessColors, livenessColorConfiguration)
-            .withLivenessColors()
+            .withLivenessColors(configuration: <#T##LivenessColorConfiguration#>)
             .onAppear {
                 DispatchQueue.main.async {
                     UIScreen.main.brightness = 1.0
@@ -200,8 +197,7 @@ public struct FaceLivenessDetectorView: View {
             }
         case .awaitingCameraPermission:
             CameraPermissionView(displayingCameraPermissionsNeededAlert: $displayingCameraPermissionsNeededAlert)
-                .environment(\.livenessColors, livenessColorConfiguration)
-                .withLivenessColors()
+                .withLivenessColors(configuration: <#T##LivenessColorConfiguration#>)
                 .onAppear {
                     checkCameraPermission()
                 }

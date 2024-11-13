@@ -11,7 +11,8 @@ import SwiftUI
 
 // First, create a view modifier to handle the colors
 public struct LivenessColorModifier: ViewModifier {
-    @Environment(\.livenessColors) var configuration
+    
+    let configuration: LivenessColorConfiguration
     
     public func body(content: Content) -> some View {
         content.environmentObject(LivenessColors(configuration: configuration))
@@ -93,8 +94,8 @@ public class LivenessColors: ObservableObject {
 
 // Extension to make it easier to use in views
 public extension View {
-    func withLivenessColors() -> some View {
-        modifier(LivenessColorModifier())
+    func withLivenessColors(configuration: LivenessColorConfiguration) -> some View {
+        modifier(LivenessColorModifier(configuration: configuration))
     }
 }
 
