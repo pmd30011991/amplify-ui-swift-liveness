@@ -36,6 +36,7 @@ struct GetReadyPageView: View {
                         .multilineTextAlignment(.center)
                     Spacer()
                 }.padding()
+                    .background(colors.livenessBackground)
             }
             beginCheckButton
         }
