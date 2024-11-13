@@ -11,7 +11,7 @@ struct InstructionView: View {
     @EnvironmentObject private var colors: LivenessColors
     let text: String
     let backgroundColor: Color
-    var textColor: Color
+    var textColor: Color = .livenessLabel
     var font: Font = .body
     
     var body: some View {
