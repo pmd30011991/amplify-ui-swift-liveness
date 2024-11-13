@@ -9,6 +9,96 @@
 
 import SwiftUI
 
+// First, create a view modifier to handle the colors
+public struct LivenessColorModifier: ViewModifier {
+    @Environment(\.livenessColors) var configuration
+    
+    public func body(content: Content) -> some View {
+        content.environmentObject(LivenessColors(configuration: configuration))
+    }
+}
+
+
+// Create an observable object to hold the colors
+public class LivenessColors: ObservableObject {
+    let configuration: LivenessColorConfiguration
+    
+    init(configuration: LivenessColorConfiguration) {
+        self.configuration = configuration
+    }
+    
+     var livenessPrimaryBackground: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.primaryBackground.light),
+            dark: .hex(configuration.primaryBackground.dark)
+        )
+    }
+    
+     var livenessPrimaryLabel: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.primaryLabel.light),
+            dark: .hex(configuration.primaryLabel.dark)
+        )
+    }
+    
+     var livenessBackground: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.background.light),
+            dark: .hex(configuration.background.dark)
+        )
+    }
+    
+     var livenessLabel: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.label.light),
+            dark: .hex(configuration.label.dark)
+        )
+    }
+    
+     var livenessErrorBackground: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.errorBackground.light),
+            dark: .hex(configuration.errorBackground.dark)
+        )
+    }
+    
+     var livenessErrorLabel: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.errorLabel.light),
+            dark: .hex(configuration.errorLabel.dark)
+        )
+    }
+    
+     var livenessWarningBackground: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.warningBackground.light),
+            dark: .hex(configuration.warningBackground.dark)
+        )
+    }
+    
+     var livenessWarningLabel: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.warningLabel.light),
+            dark: .hex(configuration.warningLabel.dark)
+        )
+    }
+    
+     var livenessPreviewBorder: Color {
+         Color.dynamicColors(
+            light: .hex(configuration.previewBorder.light),
+            dark: .hex(configuration.previewBorder.dark)
+        )
+    }
+}
+
+// Extension to make it easier to use in views
+public extension View {
+    func withLivenessColors() -> some View {
+        modifier(LivenessColorModifier())
+    }
+}
+
+
 public struct LivenessColorConfiguration {
     // Make properties public
     public var primaryBackground: (light: String, dark: String)
