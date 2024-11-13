@@ -37,7 +37,7 @@ public struct FaceLivenessDetectorView: View {
         self.disableStartView = disableStartView
         self._isPresented = isPresented
         self.onCompletion = onCompletion
-
+        self.livenessColorConfiguration = livenessColorConfiguration
         self.sessionTask = Task {
             let session = try await AWSPredictionsPlugin.startFaceLivenessSession(
                 withID: sessionID,
@@ -93,12 +93,13 @@ public struct FaceLivenessDetectorView: View {
         disableStartView: Bool = false,
         isPresented: Binding<Bool>,
         onCompletion: @escaping (Result<Void, FaceLivenessDetectionError>) -> Void,
+        livenessColorConfiguration: LivenessColorConfiguration = .default,
         captureSession: LivenessCaptureSession
     ) {
         self.disableStartView = disableStartView
         self._isPresented = isPresented
         self.onCompletion = onCompletion
-
+        self.livenessColorConfiguration = livenessColorConfiguration
         self.sessionTask = Task {
             let session = try await AWSPredictionsPlugin.startFaceLivenessSession(
                 withID: sessionID,

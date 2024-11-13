@@ -9,28 +9,42 @@
 
 import SwiftUI
 
-struct LivenessColorConfiguration {
-    // Primary colors
-    var primaryBackground: (light: String, dark: String)
-    var primaryLabel: (light: String, dark: String)
+public struct LivenessColorConfiguration {
+    // Make properties public
+    public var primaryBackground: (light: String, dark: String)
+    public var primaryLabel: (light: String, dark: String)
+    public var background: (light: String, dark: String)
+    public var label: (light: String, dark: String)
+    public var errorBackground: (light: String, dark: String)
+    public var errorLabel: (light: String, dark: String)
+    public var warningBackground: (light: String, dark: String)
+    public var warningLabel: (light: String, dark: String)
+    public var previewBorder: (light: String, dark: String)
     
-    // General colors
-    var background: (light: String, dark: String)
-    var label: (light: String, dark: String)
+    // Make initializer public
+    public init(
+        primaryBackground: (light: String, dark: String),
+        primaryLabel: (light: String, dark: String),
+        background: (light: String, dark: String),
+        label: (light: String, dark: String),
+        errorBackground: (light: String, dark: String),
+        errorLabel: (light: String, dark: String),
+        warningBackground: (light: String, dark: String),
+        warningLabel: (light: String, dark: String),
+        previewBorder: (light: String, dark: String)
+    ) {
+        self.primaryBackground = primaryBackground
+        self.primaryLabel = primaryLabel
+        self.background = background
+        self.label = label
+        self.errorBackground = errorBackground
+        self.errorLabel = errorLabel
+        self.warningBackground = warningBackground
+        self.warningLabel = warningLabel
+        self.previewBorder = previewBorder
+    }
     
-    
-    // Error states
-    var errorBackground: (light: String, dark: String)
-    var errorLabel: (light: String, dark: String)
-    
-    // Warning states
-    var warningBackground: (light: String, dark: String)
-    var warningLabel: (light: String, dark: String)
-    
-    // Preview
-    var previewBorder: (light: String, dark: String)
-    
-    static let `default` = LivenessColorConfiguration(
+    public static let `default` = LivenessColorConfiguration(
         primaryBackground: (light: "#047D95", dark: "#7DD6E8"),
         primaryLabel: (light: "#FFFFFF", dark: "#0D1926"),
         background: (light: "#FFFFFF", dark: "#0D1926"),
