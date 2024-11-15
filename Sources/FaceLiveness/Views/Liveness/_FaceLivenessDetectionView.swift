@@ -54,9 +54,9 @@ struct _FaceLivenessDetectionView<VideoView: View>: View {
                 .padding([.leading, .trailing])
                 .aspectRatio(3/4, contentMode: .fit)
                 .frame(maxWidth: .infinity)
-                .background(colors.livenessBackground)
             }
         }
+        .background(colors.livenessBackground)
         .edgesIgnoringSafeArea(.all)
     }
 }
